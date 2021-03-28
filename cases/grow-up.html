@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Grow up - Aglet</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../css/animate.css" />
+    <!-- Open Sans font import -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet" />
+    <!-- FontAwesome import -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+  </head>
+  <body class="horizontal">
+    <nav class="navbar navbar-expand-lg navbar-dark static-top" id="navbar-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand d-none d-lg-block" href="../index.html">
+          <svg id="aglet-logo" width="120px" height="30px" viewBox="0 0 300 66">
+            <style type="text/css">
+              .logo-group {
+                fill: #ffffff;
+              }
+            </style>
+            <g>
+              <path class="logo-group a-letter" d="M42.4,5.9L16.4,64.9h-5.3L39.7,1.2h5.4l28.6,63.7h-5.3L42.4,5.9z" />
+              <path class="logo-group" d="M148.4,1.2v59h35.8v4.6h-40.7V1.2H148.4z" />
+              <g>
+                <polygon class="logo-group" points="198.3,60.1 198.3,5.9 237.4,5.9 237.4,1.2 193.5,1.2 193.5,64.9 238.5,64.9 238.5,60.1 		" />
+                <rect x="205.9" y="30.6" class="logo-group" width="29.7" height="4.5" />
+              </g>
+              <rect x="248.2" y="1.3" class="logo-group" width="50.9" height="4.4" />
+              <rect x="271.2" y="13.3" class="logo-group" width="4.9" height="52.4" />
+              <g>
+                <polygon class="logo-group a-line" points="29.5,1.2 0.9,64.9 6.2,64.9 34.2,1.2 		" />
+              </g>
+              <path
+                class="logo-group"
+                d="M105.8,31.6v4.3H128v17.8c-5.5,5-12.6,7.4-19.4,7.4c-18.6,0-28.1-12.9-28.1-27.9c-0.1-14.7,9.5-28.4,28.1-28.4
+            c7.2,0,14.9,2.7,20.5,8.2l2.8-3.1c-6.5-6.4-14.9-9.6-23.3-9.6c-19.4,0-32.9,13-32.8,32.9c0,17.4,11.2,32.5,32.8,32.5
+            c9.5,0,17.4-3.6,24-10.3V31.6H105.8z"
+              />
+            </g>
+          </svg>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></button>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <button
+            class="navbar-toggler close-icon"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+            aria-expanded="false"
+          ></button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item animated delay-500"><a class="nav-link" href="../index.html">home</a></li>
+            <li class="nav-item animated delay-300"><a class="nav-link" href="../contact.html">contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </body>
+
+  <section class="page-content" id="single">
+    <div class="animated delay-800" id="thefader"></div>
+      <div class="row single-video w-100 m-0">
+        <div class="header d-none d-md-block">
+          <video poster="../assets/img/image-1.jpg" muted autoplay loop>
+            <source src="../assets/videos/video-1.mp4" type="video/mp4" />
+          </video>
+          <div class="title">Grow up</div>
+        </div>
+        <div class="header d-md-none">
+          <div class="bg-img d-md-none" style="background-image:url('../assets/img/image-1.jpg')">
+            <div class="title">Grow up</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer></footer>
+  <script src="../vendor/jquery/jquery.slim.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+  <script src="../js/main.js"></script>
+</html>

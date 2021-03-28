@@ -1,0 +1,547 @@
+/* SCREEN SIZE BREAKPOINTS */
+// Phones up to small tablets
+@mixin sm {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+// Small tablets on portrait view
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin max-md {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+// Tablets and small desktops
+@mixin lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+// Large tablets and desktops
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+// Long existential sigh...Internet Explorer
+@mixin ie {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// Color palette
+$primary: #fefefe;
+$secondary: #000000;
+$tertiary: #4a4a4a;
+$tertiary-dark: #202020;
+
+// Font presets
+$font-weights: (
+  "normal": 400,
+  "medium": 600,
+  "bold": 700,
+  "heavy": 800
+);
+
+/* Body */
+body {
+  margin: 0;
+  padding: 0;
+  background: $secondary;
+  color: $primary;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  letter-spacing: 0.25px;
+
+  @include lg {
+    overflow: hidden;
+  }
+}
+
+/* NAVBAR */
+nav#navbar-nav {
+  padding: 30px 15px;
+  width: 100%;
+  z-index: 2;
+  position: fixed;
+  height: 100px;
+
+  ul {
+    float: right;
+    list-style: none;
+    margin: 5px 0;
+
+    @include max-md {
+      width: 100%;
+    }
+  }
+
+  li {
+    padding: 5px 0px;
+    display: none;
+    @include lg {
+      padding: 0px 15px;
+      display: inline-block;
+    }
+
+    a {
+      position: relative;
+      color: $secondary;
+      font-size: 30px;
+      font-weight: map-get($font-weights, heavy);
+      text-decoration: none;
+      text-transform: lowercase;
+      padding: 0px;
+
+      @include lg {
+        color: $primary;
+        font-size: 14px;
+        font-weight: map-get($font-weights, bold);
+
+        &.active::after {
+          width: 100%;
+        }
+
+        &:hover:after {
+          width: 100%;
+          transition: width 300ms;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          height: 2.5px;
+          left: 0px;
+          width: 0px;
+          bottom: -5px;
+          background: $secondary;
+          transition: width 300ms;
+          @include lg {
+            background: $primary;
+          }
+        }
+      }
+    }
+
+    a.navbar-brand {
+      display: inline-block;
+      img {
+        height: 30px;
+        width: auto;
+      }
+    }
+
+    .logo-group {
+      animation: flicker 5s infinite, shake 5s infinite;
+    }
+
+    .a-line,
+    .a-letter {
+      animation: shake 5s infinite;
+    }
+  }
+  .navbar-toggler {
+    padding: 0px;
+    border: none;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    outline: none;
+    z-index: 2;
+    width: 20px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: unset;
+    background-image: url("../assets/img/navbar-toggle-icon.svg");
+  }
+  .navbar-toggler.close-icon {
+    background-image: url("../assets/img/close-icon.svg");
+  }
+
+  #navbar-collapse {
+    width: 100%;
+    display: block;
+    transition: all 0.5s;
+    animation: ease-out;
+    z-index: 9;
+
+    @include max-md {
+      visibility: hidden;
+      position: fixed;
+      right: 0;
+      top: 0px;
+      background: $primary;
+      height: 100vh;
+      padding: 36vh 25px;
+      transform: translateX(100%);
+    }
+
+    @include md {
+      width: 80%;
+    }
+  }
+  #navbar-collapse.show {
+    visibility: visible;
+    transform: translateX(0%);
+    animation: ease-out;
+
+    li {
+      display: block;
+      transform: translate3d(5%, 0, 0);
+      @include lg {
+        transform: none;
+      }
+    }
+  }
+}
+
+/* PAGE FADER */
+#thefader {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background: black;
+  z-index: 9;
+}
+
+/* SCROLL CARDS */
+.scroll-cards {
+  position: relative;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  padding: 0px;
+  overflow-x: hidden;
+  cursor: grab;
+
+  @include lg {
+    overflow-x: scroll;
+    padding: 25vh 0px 9vh 0px;
+  }
+  @include xl {
+    padding: 25vh 0px 12.5vh 0px;
+  }
+
+  .wrapper {
+    display: block;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: auto;
+
+    @include lg {
+      display: flex;
+    }
+  }
+
+  .card {
+    flex: 0 0 auto;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    outline: none;
+    background: unset;
+    border: none;
+    width: 100%;
+    opacity: 0;
+
+    @include ie {
+      background: transparent;
+      opacity: 1;
+    }
+
+    @include lg {
+      width: 36vw;
+      display: block;
+    }
+
+    a {
+      color: $primary;
+      text-decoration: none;
+      line-height: 0;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      opacity: 0.85;
+      transition: opacity 300ms;
+
+      &:hover {
+        opacity: 1;
+        transition: opacity 300ms;
+      }
+    }
+
+    .caption {
+      padding: 0px 25px;
+      cursor: grab;
+      top: 35%;
+      position: absolute;
+      width: 100%;
+
+      @include ie {
+        position: relative;
+      }
+
+      @include lg {
+        position: unset;
+        top: unset;
+      }
+
+      h2 {
+        margin: 20px 0 10px;
+        font-weight: map-get($font-weights, heavy);
+        font-size: 7vw;
+
+        @include lg {
+          font-size: 1.5vw;
+        }
+      }
+      h3 {
+        margin: 0px;
+        color: $primary;
+        font-size: 3.25vw;
+        font-weight: map-get($font-weights, normal);
+
+        @include lg {
+          color: $tertiary;
+          font-size: 1.2vw;
+        }
+      }
+    }
+  }
+}
+
+// Custom Scrollbar
+#home {
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 19vw;
+    height: 19vw;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+    transition: all 300ms;
+  }
+  ::-webkit-scrollbar-track {
+    background: $tertiary;
+    border: 0px;
+  }
+}
+
+/* CONTACT PAGE */
+#contact {
+  padding: 120px 0px;
+
+  @include lg {
+    padding: 120px;
+    padding-bottom: 0px;
+  }
+
+  .contact-page {
+    .image {
+      background-image: url("../assets/img/contact-image.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top left;
+      padding-bottom: 220%;
+
+      @include lg {
+        padding-bottom: 0px;
+        background-image: unset;
+      }
+
+      img {
+        display: none;
+        @include lg {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .details {
+    margin-left: 10vw;
+    margin-top: -88%;
+    width: 100%;
+    z-index: 1;
+
+    @include ie {
+      margin-top: -55%;
+    }
+
+    @include lg {
+      margin-left: unset;
+      margin-top: unset;
+      width: 58%;
+    }
+
+    h1 {
+      color: #202020;
+      font-size: 24vw;
+      margin-top: 0vh;
+      margin-left: 5vw;
+      margin-bottom: 0vh;
+      font-weight: map-get($font-weights, bold);
+
+      @include md {
+        margin-top: 0px;
+        margin-left: 0px;
+      }
+
+      @include lg {
+        font-size: 14vw;
+        margin-left: -16vw;
+        margin-bottom: unset;
+
+        @include ie {
+          margin-left: 10vw;
+        }
+      }
+    }
+    .paragraphs {
+      padding-left: 37.5vw;
+      padding-right: 15px;
+
+      @include md {
+        padding-left: 40vw;
+
+        @include ie {
+          padding-left: 30vw;
+        }
+      }
+
+      @include lg {
+        padding-left: unset;
+        margin-left: 60px;
+      }
+    }
+    p,
+    .share-buttons {
+      margin-bottom: 30px;
+      font-size: 3vw;
+
+      @include md {
+        font-size: 16px;
+      }
+
+      ul {
+        display: inline-block;
+        list-style: none;
+        padding-left: 10px;
+
+        @include md {
+          padding-left: 20px;
+        }
+
+        li {
+          display: inline-block;
+          text-align: center;
+          transition: all 300ms;
+
+          @include md {
+            margin-right: 10px;
+          }
+          a {
+            display: block;
+            border-radius: 50%;
+            font-size: 14px;
+            padding: 6px;
+            width: 35px;
+            height: 35px;
+            transition: all 300ms;
+
+            @include md {
+              font-size: 20px;
+              padding: 8px;
+              width: 45px;
+              height: 45px;
+            }
+          }
+          &.facebook a:hover {
+            background: #3b5998;
+          }
+          &.twitter a:hover {
+            background: #55acee;
+          }
+          &.g-plus a:hover {
+            background: #dc4a38;
+          }
+          &.whatsapp a:hover {
+            background: #25d366;
+          }
+        }
+      }
+
+      a {
+        color: $primary;
+      }
+    }
+  }
+}
+
+/* SINGLE PAGE */
+.header {
+  video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .bg-img {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+  .title {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    font-size: 12vw;
+    font-weight: map-get($font-weights, heavy);
+    padding: 40vh 30px;
+    text-align: center;
+    line-height: 1;
+    /*
+    &.long {
+      @include lg {
+        padding: 36vh 15vw;
+      }
+      @include md {
+        font-size: 6vw;
+      }
+    }
+    */
+
+    @include md {
+      font-size: 8vw;
+    }
+
+    @include lg {
+      padding: 30vh 15vw;
+      text-align: left;
+    }
+  }
+}
